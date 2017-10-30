@@ -1,0 +1,13 @@
+﻿PREFIX gleio: <http://lei.info/gleio/>
+
+SELECT DISTINCT ?uri ?name ?country
+WHERE {
+GRAPH ?graph {
+?uri gleio:hasLastManifestation ?lem .
+?lem gleio:hasHeadquartersAddress ?addr .
+?lem gleio:hasLegalName ?name .
+?addr gleio:hasCountry ?country .
+FILTER (?country = <http://lei.info/gleio/countries/US>)
+}
+}
+LIMIT 10
